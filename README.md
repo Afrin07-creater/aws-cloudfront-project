@@ -1,0 +1,167 @@
+# Flask AWS S3 File Upload Application
+
+## Overview
+
+This project is a simple web application built using Flask and AWS S3. It allows users to:
+
+* View files stored in an Amazon S3 bucket.
+* Upload new files to the S3 bucket through a web interface.
+
+The application uses the AWS SDK for Python (Boto3) to interact with Amazon S3.
+
+---
+
+## Features
+
+* List all files available in an S3 bucket.
+* Upload files directly to Amazon S3.
+* Simple Flask-based web interface.
+* Lightweight and easy to deploy.
+
+---
+
+## Technologies Used
+
+* Python
+* Flask
+* Amazon S3
+* Boto3 (AWS SDK for Python)
+* HTML Templates
+
+---
+
+## Project Structure
+
+```
+project/
+│
+├── app.py
+├── templates/
+│   └── index.html
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Prerequisites
+
+Before running the application, make sure you have:
+
+* Python 3.x installed
+* An AWS account
+* An Amazon S3 bucket
+* AWS Access Key ID and Secret Access Key
+* Flask installed
+* Boto3 installed
+
+---
+
+## Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd project
+```
+
+### 2. Install Dependencies
+
+```bash
+pip install flask boto3
+```
+
+Or install from requirements.txt:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## Configuration
+
+Update the following values in `app.py`:
+
+```python
+AWS_ACCESS_KEY = "YOUR_ACCESS_KEY"
+AWS_SECRET_KEY = "YOUR_SECRET_KEY"
+BUCKET_NAME = "YOUR_BUCKET_NAME"
+```
+
+### Security Recommendation
+
+Do not store AWS credentials directly in source code. Instead, use:
+
+* Environment Variables
+* AWS IAM Roles
+* AWS Credentials File
+
+Example:
+
+```python
+import os
+
+AWS_ACCESS_KEY = os.getenv("AWS_ACCESS_KEY")
+AWS_SECRET_KEY = os.getenv("AWS_SECRET_KEY")
+```
+
+---
+
+## Running the Application
+
+Start the Flask server:
+
+```bash
+python app.py
+```
+
+The application will run at:
+
+```
+http://127.0.0.1:5000
+```
+
+---
+
+## Application Workflow
+
+### Home Page (`/`)
+
+* Connects to Amazon S3.
+* Retrieves all objects from the configured bucket.
+* Displays the file names on the webpage.
+
+### Upload Endpoint (`/upload`)
+
+* Accepts file uploads through a POST request.
+* Uploads the selected file to Amazon S3.
+* Returns a success message after upload.
+
+---
+
+## Example Usage
+
+1. Open the application in your browser.
+2. Select a file using the upload form.
+3. Click Upload.
+4. The file is stored in the configured S3 bucket.
+5. Refresh the home page to view the uploaded file.
+
+---
+
+## Future Enhancements
+
+* File download functionality
+* File deletion support
+* User authentication
+* Progress bar for uploads
+* Presigned URL support
+* Multiple file uploads
+
+---
+
+## License
+
+This project is intended for educational and learning purposes.
